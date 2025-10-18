@@ -1,4 +1,4 @@
-src/main/java/ru/effectivemobile/bankREST/
+src/main/java/ru/effectivemobile/bank/
 ├── config/
 ├── controller/
 ├── dto/
@@ -8,3 +8,21 @@ src/main/java/ru/effectivemobile/bankREST/
 ├── util/
 ├── security/
 └── exception/
+
+
+
+ тесты покрывают основные сценарии использования системы:
+
+Создание и управление картами
+
+Переводы между картами
+
+Аутентификация и авторизация
+
+Валидация данных
+
+Обработка ошибок
+
+Интеграционное тестирование контроллеров
+
+Тесты используют Mockito для мокирования зависимостей и Spring Boot Test для интеграционного тестирования.
