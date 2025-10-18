@@ -1,0 +1,157 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: system
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: username
+                  type: varchar(50)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: password
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: full_name
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(100)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: role
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+
+        - createTable:
+            tableName: bank_cards
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: card_number
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: masked_card_number
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: card_holder_name
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: expiry_date
+                  type: varchar(7)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: balance
+                  type: decimal(15,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_card_user
+                    references: users(id)
+              - column:
+                  name: version
+                  type: bigint
+
+        - createTable:
+            tableName: transactions
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: from_card_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_transaction_from_card
+                    references: bank_cards(id)
+              - column:
+                  name: to_card_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_transaction_to_card
+                    references: bank_cards(id)
+              - column:
+                  name: amount
+                  type: decimal(15,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: transaction_date
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: text
+
+        - createIndex:
+            tableName: bank_cards
+            columns:
+              - column:
+                  name: user_id
+            indexName: idx_card_user
+
+        - createIndex:
+            tableName: transactions
+            columns:
+              - column:
+                  name: from_card_id
+            indexName: idx_transaction_from
+
+        - createIndex:
+            tableName: transactions
+            columns:
+              - column:
+                  name: to_card_id
+            indexName: idx_transaction_to
