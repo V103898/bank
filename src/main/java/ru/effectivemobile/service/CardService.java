@@ -1,5 +1,4 @@
 package ru.effectivemobile.service;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,7 +12,6 @@ import ru.effectivemobile.exception.ResourceNotFoundException;
 import ru.effectivemobile.repository.BankCardRepository;
 import ru.effectivemobile.util.CardNumberEncryptor;
 import ru.effectivemobile.util.CardNumberGenerator;
-
 import java.math.BigDecimal;
 import java.time.YearMonth;
 

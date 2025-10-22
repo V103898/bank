@@ -1,5 +1,4 @@
 package ru.effectivemobile.dto;
-
 import lombok.Data;
 import ru.effectivemobile.entity.BankCard;
 import java.math.BigDecimal;

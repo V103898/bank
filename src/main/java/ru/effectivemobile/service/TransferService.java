@@ -1,5 +1,4 @@
 package ru.effectivemobile.service;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,7 +9,6 @@ import ru.effectivemobile.exception.InsufficientFundsException;
 import ru.effectivemobile.exception.ResourceNotFoundException;
 import ru.effectivemobile.repository.BankCardRepository;
 import ru.effectivemobile.repository.TransactionRepository;
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Service
